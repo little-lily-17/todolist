@@ -22,12 +22,12 @@ def getall():
 def get(index):
     return items[index]
 
-@app.route('/todo/update/<int:index>/<string:word>', methods=['PUT'])
+@app.route('/todo/<int:index>/<string:word>', methods=['PUT'])
 def update(index, word):
     items[index] = word
     return jsonify('items', items)
 
-@app.route('/todo/remove/<int:index>', methods=['DELETE'])
+@app.route('/todo/<int:index>', methods=['DELETE'])
 def delete(index):
     items.pop(index)
     return jsonify('items', items)
