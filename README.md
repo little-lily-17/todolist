@@ -1,5 +1,8 @@
 Introductory to Python with `@Lily`
 -----------------------------------
 
-1. Create Rest Endpoint
-2. Integrate to persistent data
+| Task      | Status |
+| ----------- | ----------- |
+| Create Rest Endpoint      | Done       |
+| Integrate to MongoDb   | Ongoing        |
+| Add better error handling   | Not Started        |
