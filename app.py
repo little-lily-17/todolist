@@ -31,9 +31,11 @@ def getall():
         results.append(x)
     return dumps(results)
 
+
 @app.route('/todo/<int:index>', methods=['GET'])
 def get(index):
     return dumps(collection.find_one({"seq": index}))
+
 
 
 @app.route('/todo/<int:index>/<string:word>', methods=['PUT'])
@@ -41,6 +43,7 @@ def update(index, word):
     collection.find_one_and_update({"seq": index},
                                  {"$set": {"data": word}})
     return dumps(collection.find_one({"seq": index}))
+
 
 
 @app.route('/todo/<int:index>', methods=['DELETE'])
