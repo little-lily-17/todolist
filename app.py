@@ -32,20 +32,32 @@ def getall():
 
 @app.route('/todo/<int:index>', methods=['GET'])
 def get(index):
-    return dumps(collection.find_one({"seq": index}, {'_id': 0}))
+    coll = collection.find({"seq": index}, {'_id': 0})
+    if coll.count() > 0:
+        return dumps(coll)
+    else:
+        return '404'
 
 
 @app.route('/todo/<int:index>', methods=['PUT'])
 def update(index):
     word = request.get_json()
-    collection.find_one_and_update({"seq": index}, {"$set": {"data": word}})
-    return dumps(collection.find_one({"seq": index}))
+    coll = collection.find({"seq": index})
+    if coll.count() > 0:
+        collection.find_one_and_update({"seq": index}, {"$set": {"data": word}})
+        return dumps(collection.find_one({"seq": index}))
+    else:
+        return '404'
 
 
 @app.route('/todo/<int:index>', methods=['DELETE'])
 def delete(index):
-    collection.delete_one({"seq": index})
-    return "deleted"
+    coll = collection.find({"seq": index})
+    if coll.count() > 0:
+        collection.delete_one({"seq": index})
+        return "deleted"
+    else:
+        return '404'
 
 
 if __name__ == '__main__':
