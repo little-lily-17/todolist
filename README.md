@@ -5,5 +5,5 @@ Introductory to Python with `@Lily`
 | ----------- | ----------- |
 | Create Rest Endpoint      | Done       |
 | Integrate to MongoDb   | Done        |
-| Add better error handling   | Not Started        |
+| Add better error handling   | Done        |
 | Complete unit test | Not Started |
